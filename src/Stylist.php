@@ -33,5 +33,10 @@ Class Stylist
         return $this->availability;
     }
 
+    // Setters
+    function setName($new_name) {
+        $this->name =  (string) $new_name;
+    }
+
 }
 ?>

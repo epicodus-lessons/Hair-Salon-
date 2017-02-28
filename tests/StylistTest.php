@@ -68,5 +68,20 @@ class Stylist_test extends PHPUnit_Framework_TestCase
         $this->assertEquals($availability, $result);
     }
 
+    // SETTERS TEST
+
+    function test_setName()
+    {
+        //Arrange
+        $name = "Jhon";
+        $test_name = new Stylist($id, $name, $telephone, $availability);
+        $new_name = "Philips";
+        //Act
+        $set_name = $test_name->setName($new_name);
+        $result = $test_name->getName();
+        //Assert
+        $this->assertEquals($new_name, $result);
+
+    }
 }
 ?>
