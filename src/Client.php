@@ -1,6 +1,7 @@
 
 
 
+
 <?php
 Class Client
 {
@@ -31,6 +32,10 @@ Class Client
     function getTelephone()
     {
         return $this->telephone;
+    }
+    function getStylistId()
+    {
+        return $this->stylist_id;
     }
 }
 ?>

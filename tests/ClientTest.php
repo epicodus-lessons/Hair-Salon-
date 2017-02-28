@@ -57,6 +57,31 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($telephone, $result);
 
     }
+
+    function test_getStylistId()
+    {
+        //Arrange
+
+        $id = null;
+        $name = 'Robert';
+        $telephone = 02347209487;
+        $availability = "Monday";
+        $new_stylist = new Stylist($id, $name, $telephone, $availability);
+        $new_stylist->save();
+
+
+        $id = 1;
+        $name = "Anthony";
+        $telephone = 34523;
+        // We collect the id from here
+        $stylist_id = $new_stylist->getId();
+        $test_stylist_id = new Client($id, $name, $telephone, $stylist_id);
+        //Act
+        $result = $test_stylist_id->getStylistId();
+        //Assert
+        $this->assertEquals($stylist_id, $result);
+
+    }
 }
 
 
