@@ -46,5 +46,11 @@ Class Stylist
         $this->availability = (string) $new_availability;
     }
 
+    function save()
+    {
+        $GLOBALS['DB']->exec("INSERT INTO stylists (name, telephone, availability) VALUES ('{$this->getName()}', '{$this->getTelephone()}', '{$this->getAvailability()}')");
+        $this->id = $GLOBALS['DB']->lastInsertId();
+    }
+
 }
 ?>

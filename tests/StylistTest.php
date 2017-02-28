@@ -113,5 +113,21 @@ class Stylist_test extends PHPUnit_Framework_TestCase
         $this->assertEquals($new_availability, $result);
 
     }
+
+    // CRUD TEST
+    function test_save()
+    {
+        // Arrange
+        $id = null;
+        $name = "Machuca";
+        $telephone = 34523;
+        $availability = "Tusday";
+        $new_stylist = new Stylist($id, $name, $telephone, $availability);
+        $new_stylist->save();
+        // Act
+        $result = Stylist::getAll();
+        // Assert
+        $this->assertEquals($new_stylist, $result[0]);
+    }
 }
 ?>
