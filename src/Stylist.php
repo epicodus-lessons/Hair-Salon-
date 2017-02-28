@@ -46,10 +46,27 @@ Class Stylist
         $this->availability = (string) $new_availability;
     }
 
+    // CRUD
     function save()
     {
         $GLOBALS['DB']->exec("INSERT INTO stylists (name, telephone, availability) VALUES ('{$this->getName()}', '{$this->getTelephone()}', '{$this->getAvailability()}')");
         $this->id = $GLOBALS['DB']->lastInsertId();
+    }
+
+    static function getAll()
+    {
+        $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
+
+        $all_stylists = array();
+        foreach($returned_stylists as $stylist) {
+            $id = $stylist['id'];
+            $name = $stylist['name'];
+            $telephone = $stylist['telephone'];
+            $availability= $stylist['availability'];
+            $new_stylist = new Stylist($id, $name, $telephone, $availability);
+            array_push($all_stylists, $new_stylist);
+        }
+        return $all_stylists;
     }
 
 }

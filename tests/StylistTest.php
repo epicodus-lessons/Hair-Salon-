@@ -129,5 +129,27 @@ class Stylist_test extends PHPUnit_Framework_TestCase
         // Assert
         $this->assertEquals($new_stylist, $result[0]);
     }
+
+    function test_getAll()
+    {
+        // Arrange
+        $id= null;
+        $name = "Machuca";
+        $telephone = 34523;
+        $availability= "Wednesday";
+        $new_stylist = new Stylist($id, $name, $telephone, $availability);
+        $new_stylist->save();
+
+
+        $id= null;
+        $name = "Silvino";
+        $telephone = 1242;
+        $new_stylist2 = new Stylist($id, $name, $telephone, $availability);
+        $new_stylist2->save();
+        // Act
+        $result = Stylist::getAll();
+        // Assert
+        $this->assertEquals([$new_stylist, $new_stylist2], $result);
+    }
 }
 ?>
