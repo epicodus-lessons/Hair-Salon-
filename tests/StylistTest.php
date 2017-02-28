@@ -1,4 +1,5 @@
 
+
 <?php
 /**
 * @backupGlobals disabled
@@ -81,6 +82,21 @@ class Stylist_test extends PHPUnit_Framework_TestCase
         $result = $test_name->getName();
         //Assert
         $this->assertEquals($new_name, $result);
+
+    }
+
+
+    function test_setTelephone()
+    {
+        //Arrange
+        $telephone = 123456;
+        $test_telephone = new Stylist($id, $name, $telephone, $availability);
+        $new_telephone = 987654;
+        //Act
+        $set_telephone = $test_telephone->setTelephone($new_telephone);
+        $result = $test_telephone->getTelephone();
+        //Assert
+        $this->assertEquals($new_telephone, $result);
 
     }
 }

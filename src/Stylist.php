@@ -38,5 +38,9 @@ Class Stylist
         $this->name =  (string) $new_name;
     }
 
+    function setTelephone($new_telephone) {
+        $this->telephone = (int) $new_telephone;
+    }
+
 }
 ?>
