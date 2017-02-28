@@ -20,5 +20,10 @@ Class Stylist
     {
         return $this->name;
     }
+
+    function getTelephone()
+    {
+        return $this->telephone;
+    }
 }
 ?>

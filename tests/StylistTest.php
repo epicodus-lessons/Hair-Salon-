@@ -46,5 +46,16 @@ class Stylist_test extends PHPUnit_Framework_TestCase
         $this->assertEquals($name, $result);
     }
 
+    function test_getTelephono()
+    {
+        //Arrange
+        $telephone = 534;
+        $test_telephone = new Stylist($id, $name, $telephone, $availability);
+        //Act
+        $result = $test_telephone->getTelephone();
+        //Assert
+        $this->assertEquals($telephone, $result);
+    }
+
 }
 ?>
