@@ -94,6 +94,19 @@ class ClientTest extends PHPUnit_Framework_TestCase
         // Assert
         $this->assertEquals($new_name, $result);
     }
+
+    function test_setTelephone()
+    {
+        // Arrange
+        $telephone = 12345;
+        $test_telephone = new Client($id, $name, $telephone, $stylist_id);
+        $new_telephone= 098765;
+        // Act
+        $set_new_telephone = $test_telephone->setTelephone($new_telephone);
+        $result = $test_telephone->getTelephone();
+        // Assert
+        $this->assertEquals($new_telephone, $result);
+    }
 }
 
 

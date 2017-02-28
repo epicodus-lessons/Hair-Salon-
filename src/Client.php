@@ -1,4 +1,5 @@
 
+
 <?php
 Class Client
 {
@@ -38,6 +39,10 @@ Class Client
     // Setters
     function setName($new_name) {
         $this->name = (string) $new_name;
+    }
+
+    function setTelephone($new_telephone) {
+        $this->telephone = (int) $new_telephone;
     }
 }
 ?>
