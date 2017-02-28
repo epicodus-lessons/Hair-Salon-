@@ -1,7 +1,4 @@
 
-
-
-
 <?php
 Class Client
 {
@@ -36,6 +33,11 @@ Class Client
     function getStylistId()
     {
         return $this->stylist_id;
+    }
+
+    // Setters
+    function setName($new_name) {
+        $this->name = (string) $new_name;
     }
 }
 ?>

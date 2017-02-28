@@ -18,8 +18,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 {
     protected function tearDown()
     {
-        //  Stylist::deleteAll();
-        //  Client::deleteAll();
+         Stylist::deleteAll();
     }
 
     function test_getId()
@@ -81,6 +80,19 @@ class ClientTest extends PHPUnit_Framework_TestCase
         //Assert
         $this->assertEquals($stylist_id, $result);
 
+    }
+
+    function test_setName()
+    {
+        // Arrange
+        $name = 'Robert';
+        $test_name = new Client($id, $name, $telephone, $stylist_id);
+        $new_name = "Sebastian";
+        // Act
+        $set_new_name = $test_name->setName($new_name);
+        $result = $test_name->getName();
+        // Assert
+        $this->assertEquals($new_name, $result);
     }
 }
 
