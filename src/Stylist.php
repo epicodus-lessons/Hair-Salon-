@@ -11,6 +11,11 @@ Class Stylist
         $this->telephone = $telephone;
     }
     // Getters
+    function getId()
+    {
+        return $this->id;
+    }
+
     function getName()
     {
         return $this->name;

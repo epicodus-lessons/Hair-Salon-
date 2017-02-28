@@ -1,3 +1,4 @@
+
 <?php
 /**
 * @backupGlobals disabled
@@ -16,22 +17,34 @@ $DB = new PDO($server, $username, $password);
 class Stylist_test extends PHPUnit_Framework_TestCase
 {
     protected function tearDown()
-       {
-         Stylist::deleteAll();
-         Client::deleteAll();
-       }
+    {
+        Stylist::deleteAll();
+        Client::deleteAll();
+    }
 
-       //GETTERS TEST
-       function test_getName()
-       {
-           //Arrange
-           $name = "Machuca";
-           $test_name = new Stylist($id, $name, $specialty, $telephone, $email, $address, $availability);
-           //Act
-           $result = $test_name->getName();
-           //Assert
-           $this->assertEquals($name, $result);
-       }
+    //GETTERS TEST
+
+    function test_getId()
+    {
+        //Arrange
+        $id = 1;
+        $test_id = new Stylist($id, $name, $telephone, $availability);
+        //Act
+        $result = $test_id->getId();
+        //Assert
+        $this->assertEquals($id, $result);
+    }
+
+    function test_getName()
+    {
+        //Arrange
+        $name = "Machuca";
+        $test_name = new Stylist($id, $name, $telephone, $availability);
+        //Act
+        $result = $test_name->getName();
+        //Assert
+        $this->assertEquals($name, $result);
+    }
 
 }
- ?>
+?>
