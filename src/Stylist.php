@@ -25,5 +25,11 @@ Class Stylist
     {
         return $this->telephone;
     }
+
+    function getAvailability()
+    {
+        return $this->availability;
+    }
+
 }
 ?>

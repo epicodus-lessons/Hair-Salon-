@@ -57,5 +57,16 @@ class Stylist_test extends PHPUnit_Framework_TestCase
         $this->assertEquals($telephone, $result);
     }
 
+    function test_getAvailability()
+    {
+        //Arrange
+        $availability = "Monday, Tuesday";
+        $test_availability = new Stylist($id, $name, $telephone, $availability);
+        //Act
+        $result = $test_availability->getAvailability();
+        //Assert
+        $this->assertEquals($availability, $result);
+    }
+
 }
 ?>
