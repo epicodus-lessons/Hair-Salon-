@@ -10,6 +10,10 @@ Class Stylist
         $this->name = $name;
         $this->telephone = $telephone;
     }
-
+    // Getters
+    function getName()
+    {
+        return $this->name;
+    }
 }
-    ?>
+?>
