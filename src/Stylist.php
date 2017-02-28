@@ -9,6 +9,8 @@ Class Stylist
         $this->id = $id;
         $this->name = $name;
         $this->telephone = $telephone;
+        $this->availability = $availability;
+
     }
     // Getters
     function getId()
