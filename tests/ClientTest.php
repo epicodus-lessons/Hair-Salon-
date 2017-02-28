@@ -17,10 +17,21 @@ class ClientTest extends PHPUnit_Framework_TestCase
 {
     protected function tearDown()
        {
-         Stylist::deleteAll();
-         Client::deleteAll();
+        //  Stylist::deleteAll();
+        //  Client::deleteAll();
        }
 
+       function test_getName()
+       {
+           //Arrange
+           $name = "Jhon";
+           $test_name = new Client($id, $name, $telephone, $stylist_id);
+           //Act
+           $result = $test_name->getName();
+           //Assert
+           $this->assertEquals($name, $result);
+
+       }
 }
 
 

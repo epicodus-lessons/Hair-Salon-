@@ -1,3 +1,4 @@
+
 <?php
 Class Client
 {
@@ -12,6 +13,11 @@ Class Client
         $this->name = $name;
         $this->telephone = $telephone;
         $this->stylist_id = $stylist_id;
+    }
+
+    function getName()
+    {
+        return $this->name;
     }
 }
 ?>
