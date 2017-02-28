@@ -42,5 +42,9 @@ Class Stylist
         $this->telephone = (int) $new_telephone;
     }
 
+    function setAvailability($new_availability) {
+        $this->availability = (string) $new_availability;
+    }
+
 }
 ?>
