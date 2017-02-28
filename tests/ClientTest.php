@@ -1,4 +1,5 @@
 
+
 <?php
 /**
 * @backupGlobals disabled
@@ -18,7 +19,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
 {
     protected function tearDown()
     {
-         Stylist::deleteAll();
+        Stylist::deleteAll();
     }
 
     function test_getId()
@@ -107,6 +108,20 @@ class ClientTest extends PHPUnit_Framework_TestCase
         // Assert
         $this->assertEquals($new_telephone, $result);
     }
+
+    function test_setStylistId()
+    {
+        // Arrange
+        $stylist_id = 3;
+        $test_stylist_id = new Client($id, $name, $telephone, $stylist_id);
+        $new_stylist_id = 1;
+        // Act
+        $set_new_stylist_id = $test_stylist_id->setStylistId($new_stylist_id);
+        $result = $test_stylist_id->getStylistId();
+        // Assert
+        $this->assertEquals($new_stylist_id, $result);
+    }
+
 }
 
 

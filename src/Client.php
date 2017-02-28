@@ -1,5 +1,6 @@
 
 
+
 <?php
 Class Client
 {
@@ -43,6 +44,11 @@ Class Client
 
     function setTelephone($new_telephone) {
         $this->telephone = (int) $new_telephone;
+    }
+
+    function setStylistId($new_stylist_id)
+    {
+        $this->stylist_id = (int) $new_stylist_id;
     }
 }
 ?>
