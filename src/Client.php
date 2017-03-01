@@ -3,6 +3,7 @@
 
 
 
+
 <?php
 Class Client
 {
@@ -76,6 +77,12 @@ Class Client
             array_push($all_clients, $new_client);
         }
         return $all_clients;
+    }
+
+    static function deleteAll()
+    {
+        $GLOBALS['DB']->exec("DELETE FROM clients;");
+
     }
 }
 ?>
