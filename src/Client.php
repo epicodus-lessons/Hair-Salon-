@@ -2,6 +2,7 @@
 
 
 
+
 <?php
 Class Client
 {
@@ -59,6 +60,22 @@ Class Client
         $GLOBALS['DB']->exec("INSERT INTO clients (name, telephone, stylist_id) VALUES ('{$this->getName()}', '{$this->getTelephone()}',
         '{$this->getStylistId()}')");
         $this->id = $GLOBALS['DB']->lastInsertId();
+    }
+
+    static function getAll()
+    {
+        $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients;");
+
+        $all_clients = array();
+        foreach($returned_clients as $client) {
+            $id = $client['id'];
+            $name = $client['name'];
+            $telephone = $client['telephone'];
+            $stylist_id = $stylist['stylist_id'];
+            $new_client = new Client($id, $name,  $telephone, $stylist_id);
+            array_push($all_clients, $new_client);
+        }
+        return $all_clients;
     }
 }
 ?>
