@@ -31,5 +31,14 @@
         return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
     });
 
+    $app->get("/stylist/{id}", function($id) use ($app) {
+        return $app['twig']->render('stylist.html.twig', array('clients' => Client::getAll()));
+    });
+
+    $app->post("/stylist", function() use ($app){
+        $new_client = new Client($id = null, $_POST['name'], $_POST['telephone'],$POST['stylist_id']);
+        $new_client->save();
+        return $app['twig']->render('stylist.html.twig', array('clients' => Client::getAll()));
+    });
     return $app;
 ?>
