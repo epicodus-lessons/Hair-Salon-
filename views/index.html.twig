@@ -9,22 +9,22 @@
                 <li><a href="/stylist/{{stylist.getId}}">{{stylist.getName}}</a></li>
                 {% endfor %}
             </ul>
-        {% else %}
-        <p>There are no stylists yet.</p>
+            {% else %}
+            <p>There are no stylists yet.</p>
         {% endif%}
 
         <form action="/" method="post">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" name="name" class="form-control">
+                <input type="text" name="name" class="form-control" id="name">
             </div>
             <div class="form-group">
                 <label for="telephone">Telephone</label>
-                <input type="text" name="telephone" class="form-control">
+                <input type="number" name="telephone" class="form-control" id="telephone">
             </div>
             <div class="form-group">
-                <label for="avaibility">Avaibility</label>
-                <input type="text" name="avaibility" class="form-control">
+                <label for="availability">Availability</label>
+                <input type="text" name="availability" class="form-control" id="availability">
             </div>
 
             <button type="submit" class="btn btn-lg btn-success" name="button">Add Stylist</button>

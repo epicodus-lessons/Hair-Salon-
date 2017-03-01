@@ -1,3 +1,4 @@
+
 <?php
     date_default_timezone_set('America/Los_Angeles');
     require_once __DIR__."/../vendor/autoload.php";
@@ -18,11 +19,17 @@
     $app['debug'] = true;
 
     use Symfony\Component\HttpFoundation\Request;
-   Request::enableHttpMethodParameterOverride();
+    Request::enableHttpMethodParameterOverride();
 
-   $app->get("/", function() use ($app) {
-       return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
-   });
+    $app->get("/", function() use ($app) {
+        return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+    });
 
-   return $app;
+    $app->post("/", function() use ($app) {
+        $new_stylist = new Stylist($id = null, $_POST['name'], $_POST['telephone'], $_POST['availability']);
+        $new_stylist->save();
+        return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+    });
+
+    return $app;
 ?>

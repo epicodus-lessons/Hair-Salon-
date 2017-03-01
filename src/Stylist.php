@@ -7,7 +7,8 @@ Class Stylist
     private $name;
     private $telephone;
     private $availability;
-    function __construct($id = null, $name, $telephone, $availability) {
+    function __construct($id = null, $name, $telephone, $availability)
+    {
         $this->id = $id;
         $this->name = $name;
         $this->telephone = $telephone;
@@ -51,7 +52,10 @@ Class Stylist
     // CRUD
     function save()
     {
-        $GLOBALS['DB']->exec("INSERT INTO stylists (name, telephone, availability) VALUES ('{$this->getName()}', '{$this->getTelephone()}', '{$this->getAvailability()}')");
+        $GLOBALS['DB']->exec("INSERT INTO stylists(name, telephone, availability) VALUES (
+            '{$this->getName()}',
+            '{$this->getTelephone()}',
+            '{$this->getAvailability()}')");
         $this->id = $GLOBALS['DB']->lastInsertId();
     }
 
@@ -60,13 +64,16 @@ Class Stylist
         $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
 
         $all_stylists = array();
-        foreach($returned_stylists as $stylist) {
-            $id = $stylist['id'];
-            $name = $stylist['name'];
-            $telephone = $stylist['telephone'];
-            $availability= $stylist['availability'];
-            $new_stylist = new Stylist($id, $name, $telephone, $availability);
-            array_push($all_stylists, $new_stylist);
+
+        if($returned_stylists){
+            foreach($returned_stylists as $stylist) {
+                $id = $stylist['id'];
+                $name = $stylist['name'];
+                $telephone = $stylist['telephone'];
+                $availability= $stylist['availability'];
+                $new_stylist = new Stylist($id, $name, $telephone, $availability);
+                array_push($all_stylists, $new_stylist);
+            }
         }
         return $all_stylists;
     }
