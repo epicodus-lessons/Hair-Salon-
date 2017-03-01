@@ -162,7 +162,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $name = "Jacinto";
         $test_name = new Client($id, $name, $telephone, $stylist_id);
         $test_name->save();
-        
+
         $name2 = "Silvino";
         $test_name2 = new Client($id, $name, $telephone, $stylist_id);
         $test_name2->save();
@@ -171,6 +171,24 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $result = Client::getAll();
         // Assert
         $this->assertEquals([], $result);
+    }
+
+    function test_find()
+    {
+        //Arrange
+        $name = "Silvino";
+        $telephone = 1242;
+        $test_client = new Client($id, $name, $telephone, $stylist_id);
+        $test_client->save();
+
+        $name2 = "Machuca";
+        $telephone2 = 34523;
+        $new_client2 = new Client($id2, $name2, $telephone2, $stylist_id);
+        $new_client2->save();
+        //Act
+        $result = CLient::find($test_client->getId());
+        //Assert
+        $this->assertEquals($test_client, $result);
     }
 
 }
