@@ -1,6 +1,7 @@
 
 
 
+
 <?php
 Class Client
 {
@@ -49,6 +50,15 @@ Class Client
     function setStylistId($new_stylist_id)
     {
         $this->stylist_id = (int) $new_stylist_id;
+    }
+
+    // CRUD
+
+    function save()
+    {
+        $GLOBALS['DB']->exec("INSERT INTO clients (name, telephone, stylist_id) VALUES ('{$this->getName()}', '{$this->getTelephone()}',
+        '{$this->getStylistId()}')");
+        $this->id = $GLOBALS['DB']->lastInsertId();
     }
 }
 ?>
