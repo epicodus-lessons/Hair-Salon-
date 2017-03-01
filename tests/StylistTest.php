@@ -175,5 +175,70 @@ class Stylist_test extends PHPUnit_Framework_TestCase
         // Assert
         $this->assertEquals([], $result);
     }
+
+    function testGetClients()
+    {
+        // Arrange
+        // Two stylists
+        $name = "Jacinto";
+        $test_stylist = new Stylist($id, $name, $telephone, $availability);
+        $test_stylist->save();
+
+        $name2 = "Silvino";
+        $test_stylist2 = new Stylist($id, $name2, $telephone, $availability);
+        $test_stylist2->save();
+
+        // Three clients
+        $id = null;
+        $name = "Anthony";
+        $telephone = 34523;
+        $email = "felixpgmail";
+        $test_stylist_id = $test_stylist->getId();
+        $new_client = new Client($id, $name, $telephone, $test_stylist_id);
+        $new_client->save();
+
+        $id2 =null;
+        $name2 = "Machuca";
+        $telephone2 = 12433124;
+        $email2 = "felixpgmail";
+        $test_stylist_id2 = $test_stylist->getId();
+        $new_client2 = new Client($id2, $name2, $telephone2, $test_stylist_id2);
+        $new_client2->save();
+
+        $id3 = null;
+        $name3 = "Silvino";
+        $telephone3 = 1242;
+        $email3 = "felixpgmail";
+        $test_stylist_id3 = $test_stylist3->getId();
+        $new_client3 = new Client($id3, $name3, $telephone3, $test_stylist_id3);
+        $new_client3->save();
+
+        // Act
+        $result = $test_stylist->getClients();
+        // Assert
+        $this->assertEquals([$new_client, $new_client2], $result);
+    }
+
+    function test_find()
+    {
+        //Arrange
+        $name = "Machuca";
+        $telephone = 34523;
+        $availability = "Monday, Friday";
+        $test_stylist = new Stylist($id, $name, $telephone, $availability);
+        $test_stylist->save();
+
+        $name2 = "Silvino";
+        $telephone2 = 1242;
+        $availability = "Monday, Thursday";
+        $test_stylist2 = new Stylist($id2, $name2, $telephone2, $availability2);
+        $test_stylist2->save();
+        //Act
+        $result = Stylist::find($test_stylist2->getId());
+        //Assert
+        $this->assertEquals($test_stylist2, $result);
+    }
+
+
 }
 ?>

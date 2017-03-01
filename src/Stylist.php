@@ -1,3 +1,5 @@
+
+
 <?php
 Class Stylist
 {
@@ -73,6 +75,34 @@ Class Stylist
     {
         $GLOBALS['DB']->exec("DELETE FROM stylists;");
 
+    }
+
+    function getClients()
+    {
+        $clients = Array();
+        $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$this->getId()};");
+        foreach($returned_clients as $client) {
+            $id = $client['id'];
+            $name = $client['name'];
+            $telephone = $client['telephone'];
+            $stylist_id = $client['stylist_id'];
+            $new_client = new Client($id, $name, $telephone, $stylist_id);
+            array_push($clients, $new_client);
+        }
+        return $clients;
+    }
+
+    static function find($search_id)
+    {
+        $found_stylist = null;
+        $stylists = Stylist::getAll();
+        foreach($stylists as $stylist) {
+            $stylist_id = $stylist->getId();
+            if ($stylist_id == $search_id) {
+                $found_stylist = $stylist;
+            }
+        }
+        return $found_stylist;
     }
 
 }
