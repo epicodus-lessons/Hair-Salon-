@@ -28,7 +28,7 @@
     $app->post("/", function() use ($app) {
         $new_stylist = new Stylist($_POST['name'], $_POST['telephone'], $_POST['availability'], $id = null);
         $new_stylist->save();
-        return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+        return $app->redirect("/");
     });
 
     $app->get("/stylist/{id}", function($id) use ($app) {
@@ -37,14 +37,15 @@
 
     $app->post("/stylist", function() use ($app) {
 
-        $new_client = new Client($_POST['name'], $_POST['telephone'], $POST['stylist_id'], $id = null);
+        $new_client = new Client($_POST['name'], $_POST['telephone'], $POST['stylist_id']);
         $new_client->save();
-        $found_stylists = Stylist::find();
-        return $app['twig']->render('stylist.html.twig', array('clients' => Client::find($id)));
+        $found_stylists = Stylist::find($id);
+        return $app['twig']->render('stylist.html.twig', array('clients' => $found_stylists->getClients()));
     });
 
     $app->post("/delete", function() use($app) {
         Stylist::deleteAll();
+        Client::deleteAll();
         return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
     });
     return $app;
