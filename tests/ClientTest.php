@@ -27,7 +27,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
     {
         //Arrange
         $id = 1;
-        $test_id = new Client($id, $name, $type_of_cut, $telephone, $email, $address, $stylist_id);
+        $test_id = new Client($name, $telephone, $stylist_id, $id);
         //Act
         $result = $test_id->getId();
         //Assert
@@ -39,7 +39,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
     {
         //Arrange
         $name = "Jhon";
-        $test_name = new Client($id, $name, $telephone, $stylist_id);
+        $test_name = new Client($name, $telephone, $stylist_id, $id);
         //Act
         $result = $test_name->getName();
         //Assert
@@ -51,7 +51,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
     {
         //Arrange
         $telephone = 534;
-        $test_telephone = new Client($id, $name, $telephone, $stylist_id);
+        $test_telephone = new Client($name, $telephone, $stylist_id, $id);
         //Act
         $result = $test_telephone->getTelephone();
         //Assert
@@ -67,7 +67,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $name = 'Robert';
         $telephone = 02347209487;
         $availability = "Monday";
-        $new_stylist = new Stylist($id, $name, $telephone, $availability);
+        $new_stylist = new Stylist($name, $telephone, $stylist_id, $id);
         $new_stylist->save();
 
 
@@ -76,7 +76,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $telephone = 34523;
         // We collect the id from here
         $stylist_id = $new_stylist->getId();
-        $test_stylist_id = new Client($id, $name, $telephone, $stylist_id);
+        $test_stylist_id = new Client($name, $telephone, $stylist_id, $id);
         //Act
         $result = $test_stylist_id->getStylistId();
         //Assert
@@ -88,7 +88,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
     {
         // Arrange
         $name = 'Robert';
-        $test_name = new Client($id, $name, $telephone, $stylist_id);
+        $test_name = new Client($name, $telephone, $stylist_id, $id);
         $new_name = "Sebastian";
         // Act
         $set_new_name = $test_name->setName($new_name);
@@ -101,7 +101,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
     {
         // Arrange
         $telephone = 12345;
-        $test_telephone = new Client($id, $name, $telephone, $stylist_id);
+        $test_telephone = new Client($name, $telephone, $stylist_id, $id);
         $new_telephone= 098765;
         // Act
         $set_new_telephone = $test_telephone->setTelephone($new_telephone);
@@ -114,7 +114,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
     {
         // Arrange
         $stylist_id = 3;
-        $test_stylist_id = new Client($id, $name, $telephone, $stylist_id);
+        $test_stylist_id = new Client($name, $telephone, $stylist_id, $id);
         $new_stylist_id = 1;
         // Act
         $set_new_stylist_id = $test_stylist_id->setStylistId($new_stylist_id);
@@ -130,7 +130,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $id = null;
         $name = "Anthony";
         $telephone = 34523;
-        $new_client = new Client($id, $name, $telephone, $stylist_id);
+        $new_client = new Client($name, $telephone, $stylist_id, $id);
         $new_client->save();
         // Act
         $result = Client::getAll();
@@ -143,13 +143,13 @@ class ClientTest extends PHPUnit_Framework_TestCase
         // Arrange
         $name = "Machuca";
         $telephone = 34523;
-        $new_client = new Client($id, $name, $telephone, $stylist_id);
+        $new_client = new Client($name, $telephone, $stylist_id, $id);
         $new_client->save();
 
 
         $name = "Silvino";
         $telephone = 1242;
-        $new_client2 = new Client($id, $name, $telephone, $stylist_id);
+        $new_client2 = new Client($name, $telephone, $stylist_id, $id);
         $new_client2->save();
         // Act
         $result = Client::getAll();
@@ -161,11 +161,11 @@ class ClientTest extends PHPUnit_Framework_TestCase
     {
         // Arrange
         $name = "Jacinto";
-        $test_name = new Client($id, $name, $telephone, $stylist_id);
+        $test_name = new Client($name, $telephone, $stylist_id, $id);
         $test_name->save();
 
         $name2 = "Silvino";
-        $test_name2 = new Client($id, $name, $telephone, $stylist_id);
+        $test_name2 = new Client($name, $telephone, $stylist_id, $id);
         $test_name2->save();
         // Act
         $result = Client::deleteAll();
@@ -179,7 +179,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
         //Arrange
         $name = "Silvino";
         $telephone = 1242;
-        $test_client = new Client($id, $name, $telephone, $stylist_id);
+        $test_client = new Client($name, $telephone, $stylist_id, $id);
         $test_client->save();
 
         $name2 = "Machuca";

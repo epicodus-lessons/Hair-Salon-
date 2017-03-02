@@ -1,17 +1,17 @@
 <?php
 Class Client
 {
-    private $id;
     private $name;
     private $telephone;
     private $stylist_id;
+    private $id;
 
 
-    function __construct($id = null, $name, $telephone, $stylist_id) {
-        $this->id = $id;
+    function __construct($name, $telephone, $stylist_id, $id = null) {
         $this->name = $name;
         $this->telephone = $telephone;
         $this->stylist_id = $stylist_id;
+        $this->id = $id;
     }
 
     // Getters
@@ -67,7 +67,7 @@ Class Client
             $name = $client['name'];
             $telephone = $client['telephone'];
             $stylist_id = $stylist['stylist_id'];
-            $new_client = new Client($id, $name,  $telephone, $stylist_id);
+            $new_client = new Client($name,  $telephone, $stylist_id, $id);
             array_push($all_clients, $new_client);
         }
         return $all_clients;
@@ -77,6 +77,21 @@ Class Client
     {
         $GLOBALS['DB']->exec("DELETE FROM clients;");
 
+    }
+
+    function getClients()
+    {
+        $clients = Array();
+        $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$this->getId()};");
+        foreach($returned_clients as $client) {
+            $id = $client['id'];
+            $name = $client['name'];
+            $telephone = $client['telephone'];
+            $stylist_id = $client['stylist_id'];
+            $new_client = new Client($name, $telephone, $stylist_id, $id);
+            array_push($clients, $new_client);
+        }
+        return $clients;
     }
 
     static function find($search_id)

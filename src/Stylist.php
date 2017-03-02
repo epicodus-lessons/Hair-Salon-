@@ -3,16 +3,16 @@
 <?php
 Class Stylist
 {
-    private $id;
     private $name;
     private $telephone;
     private $availability;
-    function __construct($id = null, $name, $telephone, $availability)
+    private $id;
+    function __construct($name, $telephone, $availability, $id = null)
     {
-        $this->id = $id;
         $this->name = $name;
         $this->telephone = $telephone;
         $this->availability = $availability;
+        $this->id = $id;
 
     }
     // Getters
@@ -71,7 +71,7 @@ Class Stylist
                 $name = $stylist['name'];
                 $telephone = $stylist['telephone'];
                 $availability= $stylist['availability'];
-                $new_stylist = new Stylist($id, $name, $telephone, $availability);
+                $new_stylist = new Stylist($name, $telephone, $availability, $id);
                 array_push($all_stylists, $new_stylist);
             }
         }
@@ -93,7 +93,7 @@ Class Stylist
             $name = $client['name'];
             $telephone = $client['telephone'];
             $stylist_id = $client['stylist_id'];
-            $new_client = new Client($id, $name, $telephone, $stylist_id);
+            $new_client = new Client($name, $telephone, $stylist_id, $id);
             array_push($clients, $new_client);
         }
         return $clients;

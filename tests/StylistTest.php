@@ -29,7 +29,7 @@ class Stylist_test extends PHPUnit_Framework_TestCase
     {
         //Arrange
         $id = 1;
-        $test_id = new Stylist($id, $name, $telephone, $availability);
+        $test_id = new Stylist($name, $telephone, $availability, $id);
         //Act
         $result = $test_id->getId();
         //Assert
@@ -40,7 +40,7 @@ class Stylist_test extends PHPUnit_Framework_TestCase
     {
         //Arrange
         $name = "Machuca";
-        $test_name = new Stylist($id, $name, $telephone, $availability);
+        $test_name = new Stylist($name, $telephone, $availability, $id);
         //Act
         $result = $test_name->getName();
         //Assert
@@ -51,7 +51,7 @@ class Stylist_test extends PHPUnit_Framework_TestCase
     {
         //Arrange
         $telephone = 534;
-        $test_telephone = new Stylist($id, $name, $telephone, $availability);
+        $test_telephone = new Stylist($name, $telephone, $availability, $id);
         //Act
         $result = $test_telephone->getTelephone();
         //Assert
@@ -62,7 +62,7 @@ class Stylist_test extends PHPUnit_Framework_TestCase
     {
         //Arrange
         $availability = "Monday, Tuesday";
-        $test_availability = new Stylist($id, $name, $telephone, $availability);
+        $test_availability = new Stylist($name, $telephone, $availability, $id);
         //Act
         $result = $test_availability->getAvailability();
         //Assert
@@ -75,7 +75,7 @@ class Stylist_test extends PHPUnit_Framework_TestCase
     {
         //Arrange
         $name = "Jhon";
-        $test_name = new Stylist($id, $name, $telephone, $availability);
+        $test_name = new Stylist($name, $telephone, $availability, $id);
         $new_name = "Philips";
         //Act
         $set_name = $test_name->setName($new_name);
@@ -90,7 +90,7 @@ class Stylist_test extends PHPUnit_Framework_TestCase
     {
         //Arrange
         $telephone = 123456;
-        $test_telephone = new Stylist($id, $name, $telephone, $availability);
+        $test_telephone = new Stylist($name, $telephone, $availability, $id);
         $new_telephone = 987654;
         //Act
         $set_telephone = $test_telephone->setTelephone($new_telephone);
@@ -104,7 +104,7 @@ class Stylist_test extends PHPUnit_Framework_TestCase
     {
         //Arrange
         $availability = "Monday, Friday";
-        $test_availability = new Stylist($id, $name, $telephone, $availability);
+        $test_availability = new Stylist($name, $telephone, $availability, $id);
         $new_availability = "Friday, Sunday";
         //Act
         $set_availability= $test_availability->setAvailability($new_availability);
@@ -122,7 +122,7 @@ class Stylist_test extends PHPUnit_Framework_TestCase
         $name = "Machuca";
         $telephone = 34523;
         $availability = "Tusday";
-        $new_stylist = new Stylist($id, $name, $telephone, $availability);
+        $new_stylist = new Stylist($name, $telephone, $availability, $id);
         $new_stylist->save();
         // Act
         $result = Stylist::getAll();
@@ -137,7 +137,7 @@ class Stylist_test extends PHPUnit_Framework_TestCase
         $name = "Machuca";
         $telephone = 34523;
         $availability= "Wednesday";
-        $new_stylist = new Stylist($id, $name, $telephone, $availability);
+        $new_stylist = new Stylist($name, $telephone, $availability, $id);
         $new_stylist->save();
 
 
@@ -145,7 +145,7 @@ class Stylist_test extends PHPUnit_Framework_TestCase
         $name = "Silvino";
         $telephone = 1242;
         $availability= "Thursday";
-        $new_stylist2 = new Stylist($id, $name, $telephone, $availability);
+        $new_stylist2 = new Stylist($name, $telephone, $availability, $id);
         $new_stylist2->save();
         // Act
         $result = Stylist::getAll();
@@ -160,14 +160,14 @@ class Stylist_test extends PHPUnit_Framework_TestCase
         $name = "Jacinto";
         $telephone = 1242;
         $availability = "Monday";
-        $test_name = new Stylist($id, $name, $telephone,  $availability);
+        $test_name = new Stylist($name, $telephone, $availability, $id);
         $test_name->save();
 
         $id2 = null;
         $name2 = "Silvino";
         $telephone2 = 1242;
         $availability2= "Wednesday";
-        $test_name2 = new Stylist($id2, $name2, $telephone2, $availability2);
+        $test_name2 = new Stylist($name2, $telephone2, $availability2, $id2);
         $test_name2->save();
         // Act
         $result = Stylist::deleteAll();
@@ -181,11 +181,11 @@ class Stylist_test extends PHPUnit_Framework_TestCase
         // Arrange
         // Two stylists
         $name = "Jacinto";
-        $test_stylist = new Stylist($id, $name, $telephone, $availability);
+        $test_stylist = new Stylist($name, $telephone, $availability, $id);
         $test_stylist->save();
 
         $name2 = "Silvino";
-        $test_stylist2 = new Stylist($id, $name2, $telephone, $availability);
+        $test_stylist2 = new Stylist($name2, $telephone2, $availability2, $id2);
         $test_stylist2->save();
 
         // Three clients
@@ -193,21 +193,21 @@ class Stylist_test extends PHPUnit_Framework_TestCase
         $name = "Anthony";
         $telephone = 34523;
         $test_stylist_id = $test_stylist->getId();
-        $new_client = new Client($id, $name, $telephone, $test_stylist_id);
+        $new_client = new Client($name, $telephone, $test_stylist_id, $id);
         $new_client->save();
 
         $id2 =null;
         $name2 = "Machuca";
         $telephone2 = 12433124;
         $test_stylist_id2 = $test_stylist2->getId();
-        $new_client2 = new Client($id2, $name2, $telephone2, $test_stylist_id2);
+        $new_client2 = new Client($name2, $telephone2, $test_stylist_id2, $id2);
         $new_client2->save();
 
         $id3 = null;
         $name3 = "Silvino";
         $telephone3 = 1242;
         $test_stylist_id3 = $test_stylist->getId();
-        $new_client3 = new Client($id3, $name3, $telephone3, $test_stylist_id3);
+        $new_client3 = new Client($name3, $telephone3, $test_stylist_id3, $id3);
         $new_client3->save();
 
         // Act
@@ -222,13 +222,13 @@ class Stylist_test extends PHPUnit_Framework_TestCase
         $name = "Machuca";
         $telephone = 34523;
         $availability = "Monday, Friday";
-        $test_stylist = new Stylist($id, $name, $telephone, $availability);
+        $test_stylist = new Stylist($name, $telephone, $availability, $id);
         $test_stylist->save();
 
         $name2 = "Silvino";
         $telephone2 = 1242;
         $availability = "Monday, Thursday";
-        $test_stylist2 = new Stylist($id2, $name2, $telephone2, $availability2);
+        $test_stylist2 = new Stylist($name2, $telephone2, $availability2, $id2);
         $test_stylist2->save();
         //Act
         $result = Stylist::find($test_stylist2->getId());
