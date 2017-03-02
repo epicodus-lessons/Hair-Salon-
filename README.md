@@ -16,7 +16,7 @@ _A website in Silex/PHP using MySql that take track of clients and stylists for 
 
 |Behavior|Input 1 // Input 2|Output|
 |--------|-----|------|
-| Program add new stylist to the database.  | user fill form "Michelangelo, (503)876-987, MONDAY, FRIDAY"  and click "add stylist" | It returns the name of the stylist: "Michelangelo"|
+| Program add new stylist to the database.  | User fill form "Michelangelo, (503)876-987, MONDAY, FRIDAY"  and click "add stylist" | It returns the name of the stylist: "Michelangelo"|
 | Program list all the stylists. | User"Submit first stylist" | "Michelangelo/ Silvino/ Andrea" |
 | Program delete all stylists.  | User click "Delete All" | "There are no stylists yet" |
 | Program show specific information about an stylists.  | User click the stylist name |"Silvino ,(503)876-987, MONDAY, FRIDAY" Clients: Jon, Sean. |
